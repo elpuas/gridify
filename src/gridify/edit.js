@@ -40,7 +40,6 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
 	const TEMPLATE = [	[ 'elpuas/gridify-item' ] ];
 
-	console.log( useBlockProps );
 	const innerBlocksProps = useInnerBlocksProps( styles, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,

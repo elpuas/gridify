@@ -37,6 +37,10 @@
     "mobileColumnStart": {
       "type": "number",
       "default": 1
+    },
+    "spanMobileColumns": {
+      "type": "number",
+      "default": 1
     }
   },
   "usesContext": [

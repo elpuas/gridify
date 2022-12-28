@@ -10,6 +10,7 @@
 @media screen and (max-width: 768px) {
   .wp-block-elpuas-gridify-item.is-stack-on-mobile {
     grid-column-start: auto !important;
+    grid-column-end: auto !important;
   }
   .wp-block-elpuas-gridify-item.mobile-columns-start-1 {
     grid-column-start: 1 !important;
@@ -22,6 +23,18 @@
   }
   .wp-block-elpuas-gridify-item.mobile-columns-start-4 {
     grid-column-start: 4 !important;
+  }
+  .wp-block-elpuas-gridify-item.mobile-columns-end-1 {
+    grid-column-end: 1 !important;
+  }
+  .wp-block-elpuas-gridify-item.mobile-columns-end-2 {
+    grid-column-end: 2 !important;
+  }
+  .wp-block-elpuas-gridify-item.mobile-columns-end-3 {
+    grid-column-end: 3 !important;
+  }
+  .wp-block-elpuas-gridify-item.mobile-columns-end-4 {
+    grid-column-end: 4 !important;
   }
 }
 

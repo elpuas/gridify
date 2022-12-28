@@ -35,6 +35,10 @@
 		"mobileColumnStart": {
 			"type": "number",
 			"default": 1
+		},
+		"spanMobileColumns": {
+			"type": "number",
+			"default": 1
 		}
 	},
 	"usesContext": ["elpuas/mobileColumns", "elpuas/column", "elpuas/row"],

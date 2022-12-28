@@ -14,9 +14,9 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes, context } ) {
-	const { columnStart, rowStart, spanColumns, spanRows, mobileColumnStart, stackOnMobile } = attributes;
+	const { columnStart, rowStart, spanColumns, spanRows, mobileColumnStart, stackOnMobile, spanMobileColumns } = attributes;
 	const classes = useBlockProps().className;
-	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-start-${mobileColumnStart}`;
+	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-start-${mobileColumnStart} mobile-column-end-${spanMobileColumns}`;
 	const innerBlocksProps = useInnerBlocksProps( {
 		// Add a custom class to the inner blocks wrapper element
 		className: `${classes} ${mobileClasses}`,
@@ -28,7 +28,7 @@ export default function Edit( { attributes, setAttributes, context } ) {
 			gridRowEnd: `span ${ spanRows }`,
 		},
 	} );
-	console.log(context['elpuas/mobileColumns']);
+
 	return (
 		<Fragment>
 			<InspectorControls>
@@ -68,13 +68,22 @@ export default function Edit( { attributes, setAttributes, context } ) {
 							onChange={ () => setAttributes( { stackOnMobile: ! stackOnMobile } ) }
 						/>
 						{ ! stackOnMobile && (
-							<RangeControl
-								label="Mobile column start"
-								value={ mobileColumnStart }
-								onChange={ ( value ) => setAttributes( { mobileColumnStart: value } ) }
-								min={ 1 }
-								max={ context['elpuas/mobileColumns'] }
-							/>
+							<Fragment>
+								<RangeControl
+									label="Mobile column start"
+									value={ mobileColumnStart }
+									onChange={ ( value ) => setAttributes( { mobileColumnStart: value } ) }
+									min={ 1 }
+									max={ context['elpuas/mobileColumns'] }
+								/>
+								<RangeControl
+									label={ __( 'Span Columns', 'gridify' ) }
+									value={ spanMobileColumns }
+									onChange={ ( value ) => setAttributes( { spanMobileColumns: value } ) }
+									min={ 1 }
+									max={ context['elpuas/mobileColumns'] }
+								/>
+							</Fragment>
 						) }
 					</PanelBody>
 				</Panel>

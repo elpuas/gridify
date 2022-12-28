@@ -49,7 +49,8 @@ function Edit(_ref) {
     column,
     row,
     stackOnMobile,
-    mobileColumns
+    mobileColumns,
+    gap
   } = attributes;
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select('core/block-editor').getBlock(clientId).innerBlocks);
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
@@ -58,7 +59,8 @@ function Edit(_ref) {
     style: {
       display: 'grid',
       gridTemplateColumns: `repeat(${column}, 1fr)`,
-      gridTemplateRows: `repeat(${row}, 1fr)`
+      gridTemplateRows: `repeat(${row}, 1fr)`,
+      gap: `${gap}px`
     }
   });
   const appenderToUse = () => {
@@ -70,7 +72,6 @@ function Edit(_ref) {
   };
   const ALLOWED_BLOCKS = ['elpuas/gridify-item'];
   const TEMPLATE = [['elpuas/gridify-item']];
-  console.log(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps);
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(styles, {
     allowedBlocks: ALLOWED_BLOCKS,
     template: TEMPLATE,
@@ -98,6 +99,14 @@ function Edit(_ref) {
     }),
     min: 1,
     max: 12
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gap', 'my-plugin'),
+    value: gap,
+    onChange: value => setAttributes({
+      gap: value
+    }),
+    min: 0,
+    max: 100
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: "Stack on mobile",
     checked: stackOnMobile,
@@ -193,7 +202,8 @@ function Save(_ref) {
     column,
     row,
     stackOnMobile,
-    mobileColumns
+    mobileColumns,
+    gap
   } = attributes;
   const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${mobileColumns}`;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
@@ -201,7 +211,8 @@ function Save(_ref) {
     style: {
       display: 'grid',
       gridTemplateColumns: `repeat(${column}, 1fr)`,
-      gridTemplateRows: `repeat(${row}, 1fr)`
+      gridTemplateRows: `repeat(${row}, 1fr)`,
+      gap: `${gap}px`
     }
   });
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(blockProps);
