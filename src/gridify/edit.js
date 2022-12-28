@@ -1,7 +1,7 @@
 
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
-import { RangeControl } from '@wordpress/components';
+import { Panel, PanelBody, RangeControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
@@ -21,14 +21,14 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const appenderToUse = () => {
 		if ( innerBlockCount.length < 11 ) {
 			return (
-				<InnerBlocks.ButtonBlockAppender/>
+				<InnerBlocks.DefaultBlockAppender/>
 			);
 		} else {
 			return false;
 		}
 	}
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
-	const innerBlocksProps = useInnerBlocksProps( {
+	const innerBlocksProps = useInnerBlocksProps({
 		// Allow only specific blocks to be added as inner blocks
 		allowedBlocks: ALLOWED_BLOCKS,
 		// Add a custom class to the inner blocks wrapper element
@@ -48,20 +48,24 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	return (
 		<Fragment>
 			<InspectorControls>
-				<RangeControl
-					label={'Columns'}
-					value={ column }
-					onChange={ ( value ) => setAttributes( { column: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
-				<RangeControl
-					label={ __( 'Rows', 'gridify' ) }
-					value={ row }
-					onChange={ ( value ) => setAttributes( { row: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
+			<Panel>
+				<PanelBody title={ __( 'Gridify Settings', 'gridify' ) } initialOpen={ true }>
+						<RangeControl
+							label={'Columns'}
+							value={ column }
+							onChange={ ( value ) => setAttributes( { column: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<RangeControl
+							label={ __( 'Rows', 'gridify' ) }
+							value={ row }
+							onChange={ ( value ) => setAttributes( { row: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+				</PanelBody>
+			</Panel>
 			</InspectorControls>
 			<div { ...innerBlocksProps } />
 		</Fragment>

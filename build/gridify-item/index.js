@@ -48,7 +48,22 @@ function Edit(_ref) {
     spanRows
   } = attributes;
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+  console.log(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps);
+  const InnerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)({
+    // Add a custom class to the inner blocks wrapper element
+    className: classes,
+    // Add a custom style to the inner blocks wrapper element
+    style: {
+      gridColumnStart: columnStart,
+      gridRowStart: rowStart,
+      gridColumnEnd: `span ${spanColumns}`,
+      gridRowEnd: `span ${spanRows}`
+    }
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gridify Item Settings', 'gridify'),
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Start', 'gridify'),
     value: columnStart,
     onChange: value => setAttributes({
@@ -80,15 +95,7 @@ function Edit(_ref) {
     }),
     min: 1,
     max: 12
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: classes,
-    style: {
-      gridColumnStart: columnStart,
-      gridRowStart: rowStart,
-      gridColumn: `span ${spanColumns} / span ${spanColumns}`,
-      gridRow: `span ${spanRows} / span ${spanRows}`
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, null)));
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", InnerBlocksProps));
 }
 
 /***/ }),

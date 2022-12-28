@@ -1,7 +1,7 @@
 
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { RangeControl } from '@wordpress/components';
+import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
+import { Panel, PanelBody, RangeControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
 
@@ -16,50 +16,56 @@ import './editor.scss';
 export default function Edit( { attributes, setAttributes } ) {
 	const { columnStart, rowStart, spanColumns, spanRows } = attributes;
 	const classes = useBlockProps().className;
+	console.log( useBlockProps );
+	const InnerBlocksProps = useInnerBlocksProps( {
+		// Add a custom class to the inner blocks wrapper element
+		className: classes,
+		// Add a custom style to the inner blocks wrapper element
+		style: {
+			gridColumnStart: columnStart,
+			gridRowStart: rowStart,
+			gridColumnEnd: `span ${ spanColumns }`,
+			gridRowEnd: `span ${ spanRows }`,
+		},
+	} );
 
 	return (
 		<Fragment>
 			<InspectorControls>
-				<RangeControl
-					label={ __( 'Column Start', 'gridify' ) }
-					value={ columnStart }
-					onChange={ ( value ) => setAttributes( { columnStart: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
-				<RangeControl
-					label={ __( 'Span Columns', 'gridify' ) }
-					value={ spanColumns }
-					onChange={ ( value ) => setAttributes( { spanColumns: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
-				<RangeControl
-					label={ __( 'Row Start', 'gridify' ) }
-					value={ rowStart }
-					onChange={ ( value ) => setAttributes( { rowStart: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
-				<RangeControl
-					label={ __( 'Span Rows', 'gridify' ) }
-					value={ spanRows }
-					onChange={ ( value ) => setAttributes( { spanRows: value } ) }
-					min={ 1 }
-					max={ 12 }
-				/>
+				<Panel>
+					<PanelBody title={ __( 'Gridify Item Settings', 'gridify' ) } initialOpen={ true }>
+						<RangeControl
+							label={ __( 'Column Start', 'gridify' ) }
+							value={ columnStart }
+							onChange={ ( value ) => setAttributes( { columnStart: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<RangeControl
+							label={ __( 'Span Columns', 'gridify' ) }
+							value={ spanColumns }
+							onChange={ ( value ) => setAttributes( { spanColumns: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<RangeControl
+							label={ __( 'Row Start', 'gridify' ) }
+							value={ rowStart }
+							onChange={ ( value ) => setAttributes( { rowStart: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<RangeControl
+							label={ __( 'Span Rows', 'gridify' ) }
+							value={ spanRows }
+							onChange={ ( value ) => setAttributes( { spanRows: value } ) }
+							min={ 1 }
+							max={ 12 }
+						/>
+					</PanelBody>
+				</Panel>
 			</InspectorControls>
-			<div
-				className={ classes }
-				style={{
-					gridColumnStart: columnStart,
-					gridRowStart: rowStart,
-					gridColumn: `span ${ spanColumns } / span ${ spanColumns }`,
-					gridRow: `span ${ spanRows } / span ${ spanRows }`,
-				}}
-			>
-				<InnerBlocks />
-			</div>
+			<div {...InnerBlocksProps} />
 		</Fragment>
 	);
 }
