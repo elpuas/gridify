@@ -27,8 +27,17 @@
 		"spanRows": {
 			"type": "number",
 			"default": 1
+		},
+		"stackOnMobile": {
+			"type": "boolean",
+			"default": false
+		},
+		"mobileColumnStart": {
+			"type": "number",
+			"default": 1
 		}
 	},
+	"usesContext": ["elpuas/mobileColumns", "elpuas/column", "elpuas/row"],
 	"textdomain": "gridify",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

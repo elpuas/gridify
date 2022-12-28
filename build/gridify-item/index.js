@@ -39,18 +39,22 @@ __webpack_require__.r(__webpack_exports__);
 function Edit(_ref) {
   let {
     attributes,
-    setAttributes
+    setAttributes,
+    context
   } = _ref;
   const {
     columnStart,
     rowStart,
     spanColumns,
-    spanRows
+    spanRows,
+    mobileColumnStart,
+    stackOnMobile
   } = attributes;
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
+  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-start-${mobileColumnStart}`;
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)({
     // Add a custom class to the inner blocks wrapper element
-    className: classes,
+    className: `${classes} ${mobileClasses}`,
     // Add a custom style to the inner blocks wrapper element
     style: {
       gridColumnStart: columnStart,
@@ -59,6 +63,7 @@ function Edit(_ref) {
       gridRowEnd: `span ${spanRows}`
     }
   });
+  console.log(context['elpuas/mobileColumns']);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gridify Item Settings', 'gridify'),
     initialOpen: true
@@ -69,7 +74,7 @@ function Edit(_ref) {
       columnStart: value
     }),
     min: 1,
-    max: 12
+    max: context['elpuas/column']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Span Columns', 'gridify'),
     value: spanColumns,
@@ -77,7 +82,7 @@ function Edit(_ref) {
       spanColumns: value
     }),
     min: 1,
-    max: 12
+    max: context['elpuas/column']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Row Start', 'gridify'),
     value: rowStart,
@@ -85,7 +90,7 @@ function Edit(_ref) {
       rowStart: value
     }),
     min: 1,
-    max: 12
+    max: context['elpuas/row']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Span Rows', 'gridify'),
     value: spanRows,
@@ -93,7 +98,21 @@ function Edit(_ref) {
       spanRows: value
     }),
     min: 1,
-    max: 12
+    max: context['elpuas/row']
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: "Stack on mobile",
+    checked: stackOnMobile,
+    onChange: () => setAttributes({
+      stackOnMobile: !stackOnMobile
+    })
+  }), !stackOnMobile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Mobile column start",
+    value: mobileColumnStart,
+    onChange: value => setAttributes({
+      mobileColumnStart: value
+    }),
+    min: 1,
+    max: context['elpuas/mobileColumns']
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps));
 }
 
@@ -175,12 +194,14 @@ function Save(_ref) {
     columnStart,
     rowStart,
     spanColumns,
-    spanRows
+    spanRows,
+    mobileColumnStart,
+    stackOnMobile
   } = attributes;
-  // const classes = useBlockProps().className;
+  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-start-${mobileColumnStart}`;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     // Add a custom class to the inner blocks wrapper element
-    className: 'elpuas-gridify-item',
+    className: `elpuas-gridify-item ${mobileClasses}`,
     // Add a custom style to the inner blocks wrapper element
     style: {
       gridColumnStart: columnStart,

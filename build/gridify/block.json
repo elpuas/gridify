@@ -32,6 +32,11 @@
       "default": 1
     }
   },
+  "providesContext": {
+    "elpuas/column": "column",
+    "elpuas/row": "row",
+    "elpuas/mobileColumns": "mobileColumns"
+  },
   "textdomain": "gridify",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

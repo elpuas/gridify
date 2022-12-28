@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
 import { Panel, PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { Fragment, useState } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 import './editor.scss';
 
 /**
