@@ -18,6 +18,14 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { column, row } = attributes;
 	const innerBlockCount = useSelect( ( select ) => select( 'core/block-editor' ).getBlock( clientId ).innerBlocks );
 	const classes = useBlockProps().className;
+	const styles = useBlockProps({
+		style: {
+			border: '1px solid red',
+			display: 'grid',
+			gridTemplateColumns: `repeat(${ column }, 1fr)`,
+			gridTemplateRows: `repeat(${ row }, 1fr)`,
+		},
+	})
 	const appenderToUse = () => {
 		if ( innerBlockCount.length < 11 ) {
 			return (
@@ -28,7 +36,9 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		}
 	}
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
-	const innerBlocksProps = useInnerBlocksProps({
+
+	console.log( useBlockProps );
+	const innerBlocksProps = useInnerBlocksProps( styles, {
 		// Allow only specific blocks to be added as inner blocks
 		allowedBlocks: ALLOWED_BLOCKS,
 		// Add a custom class to the inner blocks wrapper element
@@ -36,13 +46,6 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		renderAppender: appenderToUse,
 		orientation:"horizontal",
 		templateInsertUpdatesSelection: true,
-		// Add a custom style to the inner blocks wrapper element
-		style: {
-			border: '1px solid red',
-			display: 'grid',
-			gridTemplateColumns: `repeat(${ column }, 1fr)`,
-			gridTemplateRows: `repeat(${ row }, 1fr)`,
-		},
 	} );
 
 	return (

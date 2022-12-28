@@ -1,6 +1,6 @@
 
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
 import { Panel, PanelBody, RangeControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
@@ -16,8 +16,7 @@ import './editor.scss';
 export default function Edit( { attributes, setAttributes } ) {
 	const { columnStart, rowStart, spanColumns, spanRows } = attributes;
 	const classes = useBlockProps().className;
-	console.log( useBlockProps );
-	const InnerBlocksProps = useInnerBlocksProps( {
+	const innerBlocksProps = useInnerBlocksProps( {
 		// Add a custom class to the inner blocks wrapper element
 		className: classes,
 		// Add a custom style to the inner blocks wrapper element
@@ -65,7 +64,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
-			<div {...InnerBlocksProps} />
+			<div {...innerBlocksProps} />
 		</Fragment>
 	);
 }

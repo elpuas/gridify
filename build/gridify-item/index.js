@@ -48,8 +48,7 @@ function Edit(_ref) {
     spanRows
   } = attributes;
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
-  console.log(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps);
-  const InnerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)({
+  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)({
     // Add a custom class to the inner blocks wrapper element
     className: classes,
     // Add a custom style to the inner blocks wrapper element
@@ -95,7 +94,7 @@ function Edit(_ref) {
     }),
     min: 1,
     max: 12
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", InnerBlocksProps));
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps));
 }
 
 /***/ }),
@@ -178,14 +177,20 @@ function Save(_ref) {
     spanColumns,
     spanRows
   } = attributes;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  // const classes = useBlockProps().className;
+  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+    // Add a custom class to the inner blocks wrapper element
+    className: 'elpuas-gridify-item',
+    // Add a custom style to the inner blocks wrapper element
     style: {
       gridColumnStart: columnStart,
       gridRowStart: rowStart,
-      gridColumn: `span ${spanColumns} / span ${spanColumns}`,
-      gridRow: `span ${spanRows} / span ${spanRows}`
+      gridColumnEnd: `span ${spanColumns}`,
+      gridRowEnd: `span ${spanRows}`
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null));
+  });
+  const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(blockProps);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps);
 }
 
 /***/ }),
