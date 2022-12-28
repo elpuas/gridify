@@ -5,8 +5,28 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-gridify {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.wp-block-elpuas-gridify {
+
+	@media screen and (max-width: 768px) {
+		&.is-stack-on-mobile {
+			grid-template-columns: repeat( 1, 1fr ) !important;
+		}
+
+		&.mobile-columns-1 {
+			grid-template-columns: repeat( 1, 1fr ) !important;
+		}
+
+		&.mobile-columns-2 {
+			grid-template-columns: repeat( 2, 1fr ) !important;
+		}
+
+		&.mobile-columns-3 {
+			grid-template-columns: repeat( 3, 1fr ) !important;
+		}
+
+		&.mobile-columns-4 {
+			grid-template-columns: repeat( 4, 1fr ) !important;
+		}
+	}
 }
+

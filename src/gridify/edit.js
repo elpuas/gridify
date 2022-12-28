@@ -1,7 +1,7 @@
 
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
-import { Panel, PanelBody, RangeControl } from '@wordpress/components';
+import { Panel, PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
@@ -15,14 +15,16 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes, clientId } ) {
-	const { column, row } = attributes;
+	const { column, row, stackOnMobile, mobileColumns, gap } = attributes;
 	const innerBlockCount = useSelect( ( select ) => select( 'core/block-editor' ).getBlock( clientId ).innerBlocks );
 	const classes = useBlockProps().className;
+	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${ mobileColumns }`;
 	const styles = useBlockProps({
 		style: {
 			display: 'grid',
 			gridTemplateColumns: `repeat(${ column }, 1fr)`,
 			gridTemplateRows: `repeat(${ row }, 1fr)`,
+			gap: `${ gap }px`,
 		},
 	})
 
@@ -38,11 +40,10 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
 	const TEMPLATE = [	[ 'elpuas/gridify-item' ] ];
 
-	console.log( useBlockProps );
 	const innerBlocksProps = useInnerBlocksProps( styles, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
-		className: classes,
+		className: `${classes} ${mobileClasses}`,
 		renderAppender: appenderToUse,
 		orientation:"horizontal",
 		templateInsertUpdatesSelection: true,
@@ -67,10 +68,32 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 							min={ 1 }
 							max={ 12 }
 						/>
+						<RangeControl
+							label={ __( 'Gap', 'my-plugin' ) }
+							value={ gap }
+							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+						<ToggleControl
+							label="Stack on mobile"
+							checked={ stackOnMobile }
+							onChange={ () => setAttributes( { stackOnMobile: ! stackOnMobile } ) }
+						/>
+						{ ! stackOnMobile && (
+							<RangeControl
+								label="Mobile columns"
+								value={ mobileColumns }
+								onChange={ ( value ) => setAttributes( { mobileColumns: value } ) }
+								min={ 1 }
+								max={ 4 }
+							/>
+						) }
 				</PanelBody>
 			</Panel>
 			</InspectorControls>
-			<div { ...innerBlocksProps } />
+			<div { ...innerBlocksProps } >
+			</div>
 		</Fragment>
 	);
 }

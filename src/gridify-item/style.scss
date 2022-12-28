@@ -5,8 +5,43 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-gridify {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.wp-block-elpuas-gridify-item {
+	@media screen and (max-width: 768px) {
+		&.is-stack-on-mobile {
+			grid-column-start: auto !important;
+			grid-column-end: auto !important;
+		}
+
+		&.mobile-columns-start-1 {
+			grid-column-start: 1 !important;
+		}
+
+		&.mobile-columns-start-2 {
+			grid-column-start: 2 !important;
+		}
+
+		&.mobile-columns-start-3 {
+			grid-column-start: 3 !important;
+		}
+
+		&.mobile-columns-start-4 {
+			grid-column-start: 4 !important;
+		}
+
+		&.mobile-columns-end-1 {
+			grid-column-end: 1 !important;
+		}
+
+		&.mobile-columns-end-2 {
+			grid-column-end: 2 !important;
+		}
+
+		&.mobile-columns-end-3 {
+			grid-column-end: 3 !important;
+		}
+
+		&.mobile-columns-end-4 {
+			grid-column-end: 4 !important;
+		}
+	}
 }
