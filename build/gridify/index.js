@@ -53,7 +53,6 @@ function Edit(_ref) {
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
   const styles = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     style: {
-      border: '1px solid red',
       display: 'grid',
       gridTemplateColumns: `repeat(${column}, 1fr)`,
       gridTemplateRows: `repeat(${row}, 1fr)`
@@ -67,11 +66,11 @@ function Edit(_ref) {
     }
   };
   const ALLOWED_BLOCKS = ['elpuas/gridify-item'];
+  const TEMPLATE = [['elpuas/gridify-item']];
   console.log(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps);
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(styles, {
-    // Allow only specific blocks to be added as inner blocks
     allowedBlocks: ALLOWED_BLOCKS,
-    // Add a custom class to the inner blocks wrapper element
+    template: TEMPLATE,
     className: classes,
     renderAppender: appenderToUse,
     orientation: "horizontal",
@@ -181,7 +180,6 @@ function Save(_ref) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: 'elpuas-gridify',
     style: {
-      border: '1px solid red',
       display: 'grid',
       gridTemplateColumns: `repeat(${column}, 1fr)`,
       gridTemplateRows: `repeat(${row}, 1fr)`

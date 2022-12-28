@@ -6,7 +6,6 @@ export default function Save( { attributes } ) {
 	const blockProps = useBlockProps.save({
 		className: 'elpuas-gridify',
 		style: {
-			border: '1px solid red',
 			display: 'grid',
 			gridTemplateColumns: `repeat(${ column }, 1fr)`,
 			gridTemplateRows: `repeat(${ row }, 1fr)`,
