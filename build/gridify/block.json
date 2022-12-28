@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "elpuas/gridify",
+  "version": "0.1.0",
+  "title": "Gridify",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A block that allows you to set a CSS Grid layout and arrange child blocks within it.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "column": {
+      "type": "number",
+      "default": 1
+    },
+    "row": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "textdomain": "gridify",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

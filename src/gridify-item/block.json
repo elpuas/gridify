@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "elpuas/gridify-item",
+	"version": "0.1.0",
+	"title": "Gridify Item",
+	"category": "widgets",
+	"parent": ["elpuas/gridify"],
+	"icon": "columns",
+	"description": "A single item within a Gridify block.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"columnStart": {
+			"type": "number",
+			"default": 1
+		},
+		"rowStart": {
+			"type": "number",
+			"default": 1
+		},
+		"spanColumns": {
+			"type": "number",
+			"default": 1
+		},
+		"spanRows": {
+			"type": "number",
+			"default": 1
+		}
+	},
+	"textdomain": "gridify",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
