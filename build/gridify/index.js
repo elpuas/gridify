@@ -50,7 +50,7 @@ function Edit(_ref) {
     row
   } = attributes;
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select('core/block-editor').getBlock(clientId).innerBlocks);
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+  const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
   const appenderToUse = () => {
     if (innerBlockCount.length < 11) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.ButtonBlockAppender, null);
@@ -59,11 +59,11 @@ function Edit(_ref) {
     }
   };
   const ALLOWED_BLOCKS = ['elpuas/gridify-item'];
-  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
+  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)({
     // Allow only specific blocks to be added as inner blocks
     allowedBlocks: ALLOWED_BLOCKS,
     // Add a custom class to the inner blocks wrapper element
-    className: 'custom-inner-blocks-class',
+    className: classes,
     renderAppender: appenderToUse,
     orientation: "horizontal",
     templateInsertUpdatesSelection: true,

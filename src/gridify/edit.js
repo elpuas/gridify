@@ -17,7 +17,7 @@ import './editor.scss';
 export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { column, row } = attributes;
 	const innerBlockCount = useSelect( ( select ) => select( 'core/block-editor' ).getBlock( clientId ).innerBlocks );
-	const blockProps = useBlockProps();
+	const classes = useBlockProps().className;
 	const appenderToUse = () => {
 		if ( innerBlockCount.length < 11 ) {
 			return (
@@ -28,11 +28,11 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 		}
 	}
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+	const innerBlocksProps = useInnerBlocksProps( {
 		// Allow only specific blocks to be added as inner blocks
 		allowedBlocks: ALLOWED_BLOCKS,
 		// Add a custom class to the inner blocks wrapper element
-		className: 'custom-inner-blocks-class',
+		className: classes,
 		renderAppender: appenderToUse,
 		orientation:"horizontal",
 		templateInsertUpdatesSelection: true,

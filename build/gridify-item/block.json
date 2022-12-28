@@ -8,7 +8,7 @@
   "parent": [
     "elpuas/gridify"
   ],
-  "icon": "smiley",
+  "icon": "columns",
   "description": "A single item within a Gridify block.",
   "supports": {
     "html": false
