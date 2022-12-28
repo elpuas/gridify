@@ -15,7 +15,7 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes, clientId } ) {
-	const { column, row, stackOnMobile, mobileColumns } = attributes;
+	const { column, row, stackOnMobile, mobileColumns, gap } = attributes;
 	const innerBlockCount = useSelect( ( select ) => select( 'core/block-editor' ).getBlock( clientId ).innerBlocks );
 	const classes = useBlockProps().className;
 	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${ mobileColumns }`;
@@ -24,6 +24,7 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 			display: 'grid',
 			gridTemplateColumns: `repeat(${ column }, 1fr)`,
 			gridTemplateRows: `repeat(${ row }, 1fr)`,
+			gap: `${ gap }px`,
 		},
 	})
 
@@ -67,6 +68,13 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 							onChange={ ( value ) => setAttributes( { row: value } ) }
 							min={ 1 }
 							max={ 12 }
+						/>
+						<RangeControl
+							label={ __( 'Gap', 'my-plugin' ) }
+							value={ gap }
+							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							min={ 0 }
+							max={ 100 }
 						/>
 						<ToggleControl
 							label="Stack on mobile"
