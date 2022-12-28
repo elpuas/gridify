@@ -1,10 +1,10 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function Save( { attributes } ) {
-	const { column, row } = attributes;
-	// const classes = useBlockProps().className;
+	const { column, row, stackOnMobile, mobileColumns } = attributes;
+	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${ mobileColumns }`;
 	const blockProps = useBlockProps.save({
-		className: 'elpuas-gridify',
+		className: `elpuas-gridify ${mobileClasses}`,
 		style: {
 			display: 'grid',
 			gridTemplateColumns: `repeat(${ column }, 1fr)`,

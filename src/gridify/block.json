@@ -18,6 +18,18 @@
 		"row": {
 			"type": "number",
 			"default": 1
+		},
+		"stackOnMobile": {
+			"type": "boolean",
+			"default": false
+		},
+		"gap": {
+			"type": "number",
+			"default": 0
+		},
+		"mobileColumns": {
+			"type": "number",
+			"default": 1
 		}
 	},
 	"textdomain": "gridify",

@@ -7,10 +7,22 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-create-block-gridify {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+@media screen and (max-width: 768px) {
+  .wp-block-elpuas-gridify.is-stack-on-mobile {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .wp-block-elpuas-gridify.mobile-columns-1 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+  .wp-block-elpuas-gridify.mobile-columns-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .wp-block-elpuas-gridify.mobile-columns-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .wp-block-elpuas-gridify.mobile-columns-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/
