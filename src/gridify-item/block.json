@@ -4,7 +4,7 @@
 	"name": "elpuas/gridify-item",
 	"version": "0.1.0",
 	"title": "Gridify Item",
-	"category": "widgets",
+	"category": "layout",
 	"parent": ["elpuas/gridify"],
 	"icon": "columns",
 	"description": "A single item within a Gridify block.",
