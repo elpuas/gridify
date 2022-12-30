@@ -1,7 +1,16 @@
-
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
-import { Panel, PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import {
+	InnerBlocks,
+	useBlockProps,
+	InspectorControls,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
+import {
+	Panel,
+	PanelBody,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
@@ -12,88 +21,111 @@ import './editor.scss';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
  *
+ * @param {Object}   props               Properties passed from the editor.
+ * @param {Object}   props.attributes    Properties passed from the editor.
+ * @param {Function} props.setAttributes Function to set the block attributes.
+ * @param {string}   props.clientId      The block client ID.
+ *
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { column, row, stackOnMobile, mobileColumns, gap } = attributes;
-	const innerBlockCount = useSelect( ( select ) => select( 'core/block-editor' ).getBlock( clientId ).innerBlocks );
+	const innerBlockCount = useSelect(
+		( select ) =>
+			select( 'core/block-editor' ).getBlock( clientId ).innerBlocks
+	);
 	const classes = useBlockProps().className;
-	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${ mobileColumns }`;
-	const styles = useBlockProps({
+	const mobileClasses = stackOnMobile
+		? 'is-stack-on-mobile'
+		: `mobile-columns-${ mobileColumns }`;
+	const styles = useBlockProps( {
 		style: {
 			display: 'grid',
 			gridTemplateColumns: `repeat(${ column }, 1fr)`,
 			gridTemplateRows: `repeat(${ row }, 1fr)`,
 			gap: `${ gap }px`,
 		},
-	})
+	} );
 
 	const appenderToUse = () => {
 		if ( innerBlockCount.length < 11 ) {
-			return (
-				<InnerBlocks.DefaultBlockAppender/>
-			);
+			return <InnerBlocks.DefaultBlockAppender />;
+			// eslint-disable-next-line no-else-return
 		} else {
 			return false;
 		}
-	}
+	};
 	const ALLOWED_BLOCKS = [ 'elpuas/gridify-item' ];
-	const TEMPLATE = [	[ 'elpuas/gridify-item' ] ];
+	const TEMPLATE = [ [ 'elpuas/gridify-item' ] ];
 
 	const innerBlocksProps = useInnerBlocksProps( styles, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		template: TEMPLATE,
-		className: `${classes} ${mobileClasses}`,
+		className: `${ classes } ${ mobileClasses }`,
 		renderAppender: appenderToUse,
-		orientation:"horizontal",
+		orientation: 'horizontal',
 		templateInsertUpdatesSelection: true,
 	} );
 
 	return (
 		<Fragment>
 			<InspectorControls>
-			<Panel>
-				<PanelBody title={ __( 'Gridify Settings', 'gridify' ) } initialOpen={ true }>
+				<Panel>
+					<PanelBody
+						title={ __( 'Gridify Settings', 'gridify' ) }
+						initialOpen={ true }
+					>
 						<RangeControl
-							label={'Columns'}
+							label={ 'Columns' }
 							value={ column }
-							onChange={ ( value ) => setAttributes( { column: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { column: value } )
+							}
 							min={ 1 }
 							max={ 12 }
 						/>
 						<RangeControl
 							label={ __( 'Rows', 'gridify' ) }
 							value={ row }
-							onChange={ ( value ) => setAttributes( { row: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { row: value } )
+							}
 							min={ 1 }
 							max={ 12 }
 						/>
 						<RangeControl
 							label={ __( 'Gap', 'my-plugin' ) }
 							value={ gap }
-							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { gap: value } )
+							}
 							min={ 0 }
 							max={ 100 }
 						/>
 						<ToggleControl
-							label="Stack on mobile"
+							label={ __( 'Stack on mobile', 'gridify' ) }
 							checked={ stackOnMobile }
-							onChange={ () => setAttributes( { stackOnMobile: ! stackOnMobile } ) }
+							onChange={ () =>
+								setAttributes( {
+									stackOnMobile: ! stackOnMobile,
+								} )
+							}
 						/>
 						{ ! stackOnMobile && (
 							<RangeControl
-								label="Mobile columns"
+								label={ __( 'Mobile columns', 'gridify' ) }
 								value={ mobileColumns }
-								onChange={ ( value ) => setAttributes( { mobileColumns: value } ) }
+								onChange={ ( value ) =>
+									setAttributes( { mobileColumns: value } )
+								}
 								min={ 1 }
 								max={ 4 }
 							/>
 						) }
-				</PanelBody>
-			</Panel>
+					</PanelBody>
+				</Panel>
 			</InspectorControls>
-			<div { ...innerBlocksProps } >
-			</div>
+			<div { ...innerBlocksProps } />
 		</Fragment>
 	);
 }

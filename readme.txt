@@ -1,18 +1,17 @@
 === Gridify ===
 Contributors:      ElPuas Digital Crafts
 Tags:              block
+Requires at least: 5.9
 Tested up to:      6.1.1
-Stable tag:        1.0.0
+Stable tag:        1.0.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 
 == Description ==
 
-A block that allows you to set a CSS Grid layout and arrange child blocks within it.
-
-This block allows you to easily create a CSS grid layout within your WordPress posts and pages. You can control the number of columns and rows, as well as the gap between grid items. You can also set responsive breakpoints to adjust the number of columns displayed on different screen sizes.
-
+A block that allows you to set a CSS Grid layout and arrange child blocks within it. This block allows you to easily create a CSS grid layout within your WordPress posts and pages. You can control the number of columns and rows, as well as the gap between grid items. You can also set responsive breakpoints to adjust the number of columns displayed on different screen sizes.
+*NOTE*: Gridify items will always start at column and row 1. To see your grid layout in a more structured way, use the Document overview / List view option in the editor.
 == Installation ==
 
 1. Download the plugin zip file or install the plugin through the WordPress plugins screen directly.
@@ -24,26 +23,21 @@ This block allows you to easily create a CSS grid layout within your WordPress p
 == Screenshots ==
 
 1. To find the block in the block library, type "layout" in the search bar.
-![Block Library](/assets/screenshot-1.jpg)
 
 2. Use the Gridify Item settings to arrange your blocks in a grid.
-![Block Settings](/assets/screenshot-2.jpg)
 
 3. Use the Gridify block settings to easily build grids.
-![Block Settings](/assets/screenshot-3.jpg)
 
 4. Open the Chrome Inspector tools to review your layout.
-![Block Settings](/assets/screenshot-4.jpg)
 
 5. Use the Gridify Block settings to move items across the grid.
-![Block Settings](/assets/screenshot-4.jpg)
 
 6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
-![Block Settings](/assets/screenshot-4.jpg)
-
-*NOTE*: Gridify items will always start at column and row 1. To see your grid layout in a more structured way, use the Document overview / List view option in the editor.
 
 == Changelog ==
+
+= 1.0.2 =
+* Update Tested Up WordPress version to Latest.
 
 = 1.0.1 =
 * Update Readme files and Description.

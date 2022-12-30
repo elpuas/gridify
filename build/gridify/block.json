@@ -2,9 +2,9 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
   "name": "elpuas/gridify",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "title": "Gridify",
-  "category": "widgets",
+  "category": "layout",
   "icon": "grid-view",
   "description": "A block that allows you to set a CSS Grid layout and arrange child blocks within it.",
   "supports": {
