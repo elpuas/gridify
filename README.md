@@ -1,9 +1,11 @@
+![gridify-banner-1544x500](https://user-images.githubusercontent.com/3707088/210112448-ce0ce71f-0105-4bf7-ace6-55c93a0b37c6.jpg)
+
 # Gridify
 
 - Contributors: [ElPuas Digital Crafts](https://elpuas.com)
 - Tags: block
-- Tested up to: 5.9
-- Stable tag: 1.0.0
+- Tested up to: 6.1.1
+- Stable tag: 1.0.2
 - License: GPL-2.0-or-later
 - License URI:[https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -43,10 +45,13 @@
 
 ## Changelog
 
-- 1.0.1
+- 1.0.2
+  - - Update Readme file.
+  - - Lint Css and JS.
+  - - Add Banner to assets folder.
 
-- Update Readme files and Description.
+- 1.0.1
+  - - Update Readme files and Description.
 
 - 1.0.0
-
-- Release
+  - - Release
