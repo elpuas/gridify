@@ -1,6 +1,6 @@
 {
 	"name": "gridify",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A block that allows you to set a CSS Grid layout and arrange child blocks within it.",
 	"author": "ElPuas Digital Crafts",
 	"license": "GPL-2.0-or-later",
