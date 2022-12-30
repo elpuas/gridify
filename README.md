@@ -22,22 +22,22 @@
 ## Screenshots
 
 1. To find the block in the block library, type "layout" in the search bar.
-![Block Library](/plugins/gridify/assets/screenshot-1.jpg)
+![Block Library](https://user-images.githubusercontent.com/3707088/210089250-94ad23d8-4dcc-4722-94da-49b1eeef9c74.jpg)
 
 2. Use the Gridify Item settings to arrange your blocks in a grid.
-![Block Settings](/plugins/gridify/assets/screenshot-2.jpg)
+![Block Settings](https://user-images.githubusercontent.com/3707088/210089254-da531e9a-f9c2-4cd6-80a2-9c05a9862b02.jpg)
 
 3. Use the Gridify block settings to easily build grids.
-![Block Settings](/plugins/gridify/assets/screenshot-3.jpg)
+![Block Settings](https://user-images.githubusercontent.com/3707088/210089256-4ea04000-a6a0-4597-aca9-5552fd084716.jpg)
 
 4. Open the Chrome Inspector tools to review your layout.
-![Block Settings](/plugins/gridify/assets/screenshot-4.jpg)
+![Block Settings](https://user-images.githubusercontent.com/3707088/210089258-4d3a6dba-9ed3-4558-9aa8-7ae2df4fafc7.jpg)
 
 5. Use the Gridify Block settings to move items across the grid.
-![Block Settings](/plugins/gridify/assets/screenshot-4.jpg)
+![Block Settings](https://user-images.githubusercontent.com/3707088/210089259-5003fe2a-40c2-491d-a7d5-1631d445a8e5.jpg)
 
 6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
-![Block Settings](/plugins/gridify/assets/screenshot-4.jpg)
+![Block Settings](https://user-images.githubusercontent.com/3707088/210089262-cd78a8ff-5250-4e7e-a450-2985b4dc300b.jpg)
 
 ## Changelog
 
