@@ -4,8 +4,9 @@
  * Description:       A block that allows you to set a CSS Grid layout and arrange child blocks within it.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            ElPuas Digital Crafts
+ * Author URI:        https://elpuas.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       gridify

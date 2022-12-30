@@ -1,7 +1,15 @@
-
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, useInnerBlocksProps } from '@wordpress/block-editor';
-import { Panel, PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import {
+	useBlockProps,
+	InspectorControls,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
+import {
+	Panel,
+	PanelBody,
+	RangeControl,
+	ToggleControl,
+} from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import './editor.scss';
 
@@ -11,15 +19,30 @@ import './editor.scss';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
  *
+ * @param {Object}   props               Properties passed from the editor.
+ * @param {Object}   props.attributes    Block attributes.
+ * @param {Function} props.setAttributes Function to set block attributes.
+ * @param {Object}   props.context       Context object.
+ *
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes, context } ) {
-	const { columnStart, rowStart, spanColumns, spanRows, mobileColumnStart, stackOnMobile, spanMobileColumns } = attributes;
+	const {
+		columnStart,
+		rowStart,
+		spanColumns,
+		spanRows,
+		mobileColumnStart,
+		stackOnMobile,
+		spanMobileColumns,
+	} = attributes;
 	const classes = useBlockProps().className;
-	const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-start-${mobileColumnStart} mobile-column-end-${spanMobileColumns}`;
+	const mobileClasses = stackOnMobile
+		? 'is-stack-on-mobile'
+		: `mobile-columns-start-${ mobileColumnStart } mobile-column-end-${ spanMobileColumns }`;
 	const innerBlocksProps = useInnerBlocksProps( {
 		// Add a custom class to the inner blocks wrapper element
-		className: `${classes} ${mobileClasses}`,
+		className: `${ classes } ${ mobileClasses }`,
 		// Add a custom style to the inner blocks wrapper element
 		style: {
 			gridColumnStart: columnStart,
@@ -33,62 +56,88 @@ export default function Edit( { attributes, setAttributes, context } ) {
 		<Fragment>
 			<InspectorControls>
 				<Panel>
-					<PanelBody title={ __( 'Gridify Item Settings', 'gridify' ) } initialOpen={ true }>
+					<PanelBody
+						title={ __( 'Gridify Item Settings', 'gridify' ) }
+						initialOpen={ true }
+					>
 						<RangeControl
 							label={ __( 'Column Start', 'gridify' ) }
 							value={ columnStart }
-							onChange={ ( value ) => setAttributes( { columnStart: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { columnStart: value } )
+							}
 							min={ 1 }
-							max={ context['elpuas/column'] }
+							max={ context[ 'elpuas/column' ] }
 						/>
 						<RangeControl
 							label={ __( 'Span Columns', 'gridify' ) }
 							value={ spanColumns }
-							onChange={ ( value ) => setAttributes( { spanColumns: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { spanColumns: value } )
+							}
 							min={ 1 }
-							max={ context['elpuas/column'] }
+							max={ context[ 'elpuas/column' ] }
 						/>
 						<RangeControl
 							label={ __( 'Row Start', 'gridify' ) }
 							value={ rowStart }
-							onChange={ ( value ) => setAttributes( { rowStart: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { rowStart: value } )
+							}
 							min={ 1 }
-							max={ context['elpuas/row'] }
+							max={ context[ 'elpuas/row' ] }
 						/>
 						<RangeControl
 							label={ __( 'Span Rows', 'gridify' ) }
 							value={ spanRows }
-							onChange={ ( value ) => setAttributes( { spanRows: value } ) }
+							onChange={ ( value ) =>
+								setAttributes( { spanRows: value } )
+							}
 							min={ 1 }
-							max={ context['elpuas/row'] }
+							max={ context[ 'elpuas/row' ] }
 						/>
 						<ToggleControl
-							label="Stack on mobile"
+							label={ __( 'Stack on mobile', 'gridify' ) }
 							checked={ stackOnMobile }
-							onChange={ () => setAttributes( { stackOnMobile: ! stackOnMobile } ) }
+							onChange={ () =>
+								setAttributes( {
+									stackOnMobile: ! stackOnMobile,
+								} )
+							}
 						/>
 						{ ! stackOnMobile && (
 							<Fragment>
 								<RangeControl
-									label="Mobile column start"
+									label={ __(
+										'Mobile column start',
+										'gridify'
+									) }
 									value={ mobileColumnStart }
-									onChange={ ( value ) => setAttributes( { mobileColumnStart: value } ) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											mobileColumnStart: value,
+										} )
+									}
 									min={ 1 }
-									max={ context['elpuas/mobileColumns'] }
+									max={ context[ 'elpuas/mobileColumns' ] }
 								/>
 								<RangeControl
 									label={ __( 'Span Columns', 'gridify' ) }
 									value={ spanMobileColumns }
-									onChange={ ( value ) => setAttributes( { spanMobileColumns: value } ) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											spanMobileColumns: value,
+										} )
+									}
 									min={ 1 }
-									max={ context['elpuas/mobileColumns'] }
+									max={ context[ 'elpuas/mobileColumns' ] }
 								/>
 							</Fragment>
 						) }
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
-			<div {...innerBlocksProps} />
+			<div { ...innerBlocksProps } />
 		</Fragment>
 	);
 }
