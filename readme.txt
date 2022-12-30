@@ -41,6 +41,8 @@ This block allows you to easily create a CSS grid layout within your WordPress p
 6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
 ![Block Settings](/assets/screenshot-4.jpg)
 
+*NOTE*: Gridify items will always start at column and row 1. To see your grid layout in a more structured way, use the Document overview / List view option in the editor.
+
 == Changelog ==
 
 = 1.0.1 =

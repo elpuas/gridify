@@ -39,6 +39,8 @@
 6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
 ![Block Settings](https://user-images.githubusercontent.com/3707088/210089262-cd78a8ff-5250-4e7e-a450-2985b4dc300b.jpg)
 
+**NOTE**: Gridify items will always start at column and row 1. To see your grid layout in a more structured way, use the [Document overview / List](https://learn.wordpress.org/tutorial/how-to-use-the-list-view/) view option in the editor.
+
 ## Changelog
 
 - 1.0.1
