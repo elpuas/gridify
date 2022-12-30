@@ -1,7 +1,7 @@
 === Gridify ===
 Contributors:      ElPuas Digital Crafts
 Tags:              block
-Tested up to:      5.9
+Tested up to:      6.1.1
 Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
