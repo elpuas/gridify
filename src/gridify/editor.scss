@@ -4,3 +4,20 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+:root {
+	--cols: 4;
+	--rows: 4;
+	--gap: 10px;
+}
+
+.wp-block-elpuas-gridify {
+	border: 1px solid rgba(0, 0, 0, .08);
+	background:
+		linear-gradient(-90deg, rgba(0, 0, 0, .08) 1px, transparent 1px),
+		linear-gradient(rgba(0,0,0,.08) 1px, transparent 1px),
+		transparent;
+	background-size:
+		calc(100% / var(--cols)) calc(100% / var(--cols)),
+		calc(100% / var(--rows)) calc(100% / var(--rows)),
+}
+
