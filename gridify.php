@@ -4,7 +4,7 @@
  * Description:       A block that allows you to set a CSS Grid layout and arrange child blocks within it.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           1.0.2
+ * Version:           2.0.0
  * Author:            ElPuas Digital Crafts
  * Author URI:        https://elpuas.com
  * License:           GPL-2.0-or-later
