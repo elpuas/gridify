@@ -5,7 +5,7 @@
 - Contributors: [ElPuas Digital Crafts](https://elpuas.com)
 - Tags: block
 - Tested up to: 6.1.1
-- Stable tag: 1.0.2
+- Stable tag: 2.0.0
 - License: GPL-2.0-or-later
 - License URI:[https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -32,26 +32,28 @@
 3. Use the Gridify block settings to easily build grids.
 ![Block Settings](https://user-images.githubusercontent.com/3707088/210089256-4ea04000-a6a0-4597-aca9-5552fd084716.jpg)
 
-4. Open the Chrome Inspector tools to review your layout.
-![Block Settings](https://user-images.githubusercontent.com/3707088/210089258-4d3a6dba-9ed3-4558-9aa8-7ae2df4fafc7.jpg)
-
-5. Use the Gridify Block settings to move items across the grid.
+4. Use the Gridify Block settings to move items across the grid.
 ![Block Settings](https://user-images.githubusercontent.com/3707088/210089259-5003fe2a-40c2-491d-a7d5-1631d445a8e5.jpg)
 
-6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
+5. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
 ![Block Settings](https://user-images.githubusercontent.com/3707088/210089262-cd78a8ff-5250-4e7e-a450-2985b4dc300b.jpg)
 
 **NOTE**: Gridify items will always start at column and row 1. To see your grid layout in a more structured way, use the [Document overview / List](https://learn.wordpress.org/tutorial/how-to-use-the-list-view/) view option in the editor.
+Click the Show Grid Layout toggle to review your Grid.
 
 ## Changelog
 
+- 2.0.0
+    - - Add a Toggle Control to show your grid layout.
+    - - Change from inline styles to set the columns and rows, to use only CSS Variables.
+
 - 1.0.2
-  - - Update Readme file.
-  - - Lint Css and JS.
-  - - Add Banner to assets folder.
+    - - Update Readme file.
+    - - Lint Css and JS.
+    - - Add Banner to assets folder.
 
 - 1.0.1
-  - - Update Readme files and Description.
+    - - Update Readme files and Description.
 
 - 1.0.0
-  - - Release
+    - - Release

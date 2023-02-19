@@ -11,13 +11,14 @@
   --mobile-columns: 1;
   --grid-columns: 2;
   --grid-rows: 2;
-  --gap: 16;
+  --grid-gap: 16px;
 }
 
 .wp-block-elpuas-gridify {
   display: grid;
   grid-template-columns: repeat(var(--grid-columns), 1fr);
   grid-template-rows: repeat(var(--grid-rows), 1fr);
+  gap: var(--grid-gap);
 }
 @media screen and (max-width: 768px) {
   .wp-block-elpuas-gridify.is-stack-on-mobile {
