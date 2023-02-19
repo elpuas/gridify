@@ -28,13 +28,17 @@ A block that allows you to set a CSS Grid layout and arrange child blocks within
 
 3. Use the Gridify block settings to easily build grids.
 
-4. Open the Chrome Inspector tools to review your layout.
+4. Click the Show Grid Layout toggle to review your Grid.
 
 5. Use the Gridify Block settings to move items across the grid.
 
 6. Use the Gridify Block settings to freely arrange items inside the block and display them seamlessly on the frontend.
 
 == Changelog ==
+
+= 2.0.0 =
+* Add a Toggle Control to show your grid layout.
+* Change from inline styles to set the columns and rows, to use only CSS Variables.
 
 = 1.0.2 =
 * Update Tested Up WordPress version to Latest.
