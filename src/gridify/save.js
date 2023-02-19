@@ -4,14 +4,14 @@ export default function Save( { attributes } ) {
 	const { column, row, stackOnMobile, mobileColumns, gap } = attributes;
 	const mobileClasses = stackOnMobile
 		? 'is-stack-on-mobile'
-		: `mobile-columns-${ mobileColumns }`;
+		: 'mobile-columns';
 	const blockProps = useBlockProps.save( {
 		className: `elpuas-gridify ${ mobileClasses }`,
 		style: {
-			display: 'grid',
-			gridTemplateColumns: `repeat(${ column }, 1fr)`,
-			gridTemplateRows: `repeat(${ row }, 1fr)`,
-			gap: `${ gap }px`,
+			'--grid-columns': `${ column }`,
+			'--grid-rows': `${ row }`,
+			'--grid-gap': `${ gap }px`,
+			'--mobile-columns': `${ mobileColumns }`,
 		},
 	} );
 

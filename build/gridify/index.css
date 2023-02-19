@@ -7,14 +7,14 @@
  * Replace them with your own styles or remove the file completely.
  */
 :root {
-  --cols: 4;
-  --rows: 4;
-  --gap: 10px;
+  --cols: 1;
+  --rows: 1;
+  --line-color: rgba(0, 0, 0, .08);
 }
 
 .wp-block-elpuas-gridify {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), transparent;
+  border: 1px solid var(--line-color);
+  background: linear-gradient(-90deg, var(--line-color) 1px, transparent 1px), linear-gradient(var(--line-color) 1px, transparent 1px), transparent;
   background-size: calc(100% / var(--cols)) calc(100% / var(--cols)), calc(100% / var(--rows)) calc(100% / var(--rows));
 }
 

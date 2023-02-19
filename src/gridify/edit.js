@@ -12,7 +12,7 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { Fragment } from '@wordpress/element';
+import { Fragment, useState } from '@wordpress/element';
 import './editor.scss';
 
 /**
@@ -30,6 +30,8 @@ import './editor.scss';
  */
 export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { column, row, stackOnMobile, mobileColumns, gap } = attributes;
+	const [ lineColor, setLineColor ] = useState( 'transparent' );
+	const [showLayout, setShowLayout] = useState(false);
 	const innerBlockCount = useSelect(
 		( select ) =>
 			select( 'core/block-editor' ).getBlock( clientId ).innerBlocks
@@ -37,13 +39,16 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 	const classes = useBlockProps().className;
 	const mobileClasses = stackOnMobile
 		? 'is-stack-on-mobile'
-		: `mobile-columns-${ mobileColumns }`;
+		: 'mobile-columns';
 	const styles = useBlockProps( {
 		style: {
-			display: 'grid',
-			gridTemplateColumns: `repeat(${ column }, 1fr)`,
-			gridTemplateRows: `repeat(${ row }, 1fr)`,
-			gap: `${ gap }px`,
+			'--grid-columns': `${ column }`,
+			'--grid-rows': `${ row }`,
+			'--grid-gap': `${ gap }px`,
+			'--cols': `${ column }`,
+			'--rows': `${ row }`,
+			'--line-color': `${ lineColor }`,
+			'--mobile-columns': `${ mobileColumns }`,
 		},
 	} );
 
@@ -122,6 +127,19 @@ export default function Edit( { attributes, setAttributes, clientId } ) {
 								max={ 4 }
 							/>
 						) }
+					</PanelBody>
+				</Panel>
+				<Panel>
+					<PanelBody>
+						<ToggleControl
+							label={ __( 'Show Grid Layout', 'gridify' ) }
+							checked={ showLayout }
+							onChange={ () => {
+									setShowLayout(!showLayout);
+									setLineColor(showLayout ? 'transparent' : 'rgba(0, 0, 0, .08)');
+								}
+							}
+						/>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>

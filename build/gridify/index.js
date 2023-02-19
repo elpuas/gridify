@@ -57,15 +57,20 @@ function Edit(_ref) {
     mobileColumns,
     gap
   } = attributes;
+  const [lineColor, setLineColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('transparent');
+  const [showLayout, setShowLayout] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select('core/block-editor').getBlock(clientId).innerBlocks);
   const classes = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)().className;
-  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${mobileColumns}`;
+  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : 'mobile-columns';
   const styles = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     style: {
-      display: 'grid',
-      gridTemplateColumns: `repeat(${column}, 1fr)`,
-      gridTemplateRows: `repeat(${row}, 1fr)`,
-      gap: `${gap}px`
+      '--grid-columns': `${column}`,
+      '--grid-rows': `${row}`,
+      '--grid-gap': `${gap}px`,
+      '--cols': `${column}`,
+      '--rows': `${row}`,
+      '--line-color': `${lineColor}`,
+      '--mobile-columns': `${mobileColumns}`
     }
   });
   const appenderToUse = () => {
@@ -127,6 +132,13 @@ function Edit(_ref) {
     }),
     min: 1,
     max: 4
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Grid Layout', 'gridify'),
+    checked: showLayout,
+    onChange: () => {
+      setShowLayout(!showLayout);
+      setLineColor(showLayout ? 'transparent' : 'rgba(0, 0, 0, .08)');
+    }
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps));
 }
 
@@ -211,14 +223,14 @@ function Save(_ref) {
     mobileColumns,
     gap
   } = attributes;
-  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : `mobile-columns-${mobileColumns}`;
+  const mobileClasses = stackOnMobile ? 'is-stack-on-mobile' : 'mobile-columns';
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: `elpuas-gridify ${mobileClasses}`,
     style: {
-      display: 'grid',
-      gridTemplateColumns: `repeat(${column}, 1fr)`,
-      gridTemplateRows: `repeat(${row}, 1fr)`,
-      gap: `${gap}px`
+      '--grid-columns': `${column}`,
+      '--grid-rows': `${row}`,
+      '--grid-gap': `${gap}px`,
+      '--mobile-columns': `${mobileColumns}`
     }
   });
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(blockProps);
